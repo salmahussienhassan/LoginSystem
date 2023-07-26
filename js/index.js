@@ -5,9 +5,13 @@ var sPass=document.querySelector('#sPass');
 var signup=document.querySelector('#signup')
 var lPass=document.querySelector('#lPass');
 var lEmail=document.querySelector('#lEmail');
-var login=document.querySelector('#login')
-var logout=document.querySelector('#logout')
-var heading=document.querySelector('#heading')
+var login=document.querySelector('#login');
+
+var heading=document.querySelector('#heading');
+var sfeedback=document.querySelector('#sfeedback');
+var lfeedback=document.querySelector('#lfeedback');
+
+
 
 var allUsers;
 
@@ -20,77 +24,116 @@ else
 {
     allUsers=[];
 }
-document.addEventListener("DOMContentLoaded", function() {
 
-if(signup){
-    signup.addEventListener('click',function(){
-        var user={
-            name:sName.value,
-            email:sEmail.value,
-            pass:sPass.value
-    
+
+//signup function
+    signup?.addEventListener('click',function(){
+        
+        if(Emailvaild()==true && Namevaild()==true && Passvaild()==true){
+            console.log('hi')
+            console.log(isReserved())
+           if(isReserved()==false)
+           {
+            var user={
+                name:sName.value,
+                email:sEmail.value,
+                pass:sPass.value
+        
+            }
+        allUsers.push(user);
+        localStorage.setItem('users',JSON.stringify(allUsers));
+        
+        sfeedback.className= sfeedback.className.replace("text-danger","text-green");
+        sfeedback.innerHTML='Success';
+           }
         }
-    allUsers.push(user);
-    localStorage.setItem('users',JSON.stringify(allUsers));
-    window.location.href = "./index.html";
+        else{
+           
+            notvaild();
+        }
+        
     });
-}
-});
-  
 
-// function signUP(){
-//     var user={
-//         name:sName.value,
-//         email:sEmail.value,
-//         pass:sPass.value
 
-//     }
-// allUsers.push(user);
-// localStorage.setItem('users',JSON.stringify(allUsers));
-// window.location.href = "./index.html";
-// }
-document.addEventListener("DOMContentLoaded", function() {
-if(login){
-    login.addEventListener('click',function(){
+
+//login function
+    login?.addEventListener('click',function(){
         for(var i=0;i<allUsers.length;i++){
         
                  if(lEmail.value==allUsers[i].email && lPass.value==allUsers[i].pass)
                  {console.log(allUsers[i].name);
                   
-                 
+                 localStorage.setItem("usersindex",`${i}`);
                      window.location.replace("./home.html");
-                   addtext(i);
-                     
+                
                      
                  }
                 
                  
              }
+             lfeedback.innerHTML='Incorrect Email or Password'
 
              
     });
+
+
+  
+    // email validation
+
+    function Emailvaild(){
+var RegExp=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+return RegExp.test(sEmail.value);
+
+    }
+function Namevaild(){
+    if(sName.value!=='')
+    return true;
+    else
+    return false;
 }
-   
-});
-  function addtext(index){
-    document.getElementById('heading').innerHTML+=`<h2 class="text-center fw-bold my-5">Welcome ${allUsers[index].name}</h2>`;
-  }
-// function logIN(){
-//     for(var i=0;i<allUsers.length;i++){
-//         console.log(lEmail.value);
-//         console.log(allUsers[i].email);
-        
-//              if(lEmail.value==allUsers[i].email && lPass.value==allUsers[i].pass)
-//              {
-//                  window.location.href = "./home.html";
-//              }
-//          }
-// }
-document.addEventListener("DOMContentLoaded", function() {
-if(logout){
-    logout.addEventListener('click',function(){
-        window.location.href = "./index.html";
-    });
+function Passvaild(){
+    if(sPass.value!=='')
+    return true;
+    else
+    return false;
+}
+    function notvaild(){
+
+        if(!Passvaild()){
+            
+            sfeedback.innerHTML='All Inputs Is Required'
+        }
+        if(!Namevaild()){
+           
+            sfeedback.innerHTML='All Inputs Is Required'
+        }
+if (!Emailvaild())
+{
+    if(sEmail.value=='')
+    {
+        sfeedback.innerHTML='All Inputs Is Required'
+    }
+    else
+    {
+        sfeedback.innerHTML='Email Is Invaild';
+    }
+
 }
 
-});
+    }
+
+    //email_isreserved
+    function isReserved(){
+        for(var i=0;i<allUsers.length;i++){
+            if(sEmail.value==allUsers[i].email){
+              
+                if(sfeedback.className.includes("text-green")){
+                    sfeedback.className= sfeedback.className.replace("text-green","text-danger");
+                }
+                sfeedback.innerHTML='This Email Is Already Reserved';
+                return true;
+
+            }
+        }
+        return false;
+    }

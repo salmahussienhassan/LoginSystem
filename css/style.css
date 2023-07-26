@@ -1,43 +1,68 @@
-body ,.nav {
-    font-family: "Titillium Web", sans-serif;
-    background: #24353f;
+body,
+.nav {
+    font-family: 'Roboto', sans-serif;
+    background: #222D32;
 }
-.nav{
+
+.login-key {
+    height: 100px;
+    font-size: 80px;
+    line-height: 100px;
+    background: linear-gradient(#27EF9F, #0DB8DE);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.nav {
     box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
 }
+
 #home {
     height: 75vh;
 }
 
 h1 {
-    color: #17a2b8;
+    background: linear-gradient(#27EF9F, #0DB8DE);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
 }
-input{
-    background-color: #24353f !important;
+
+input {
+    background: #1A2226 !important;
 }
-input::placeholder{
+
+input::placeholder {
     color: rgb(207, 207, 207) !important;
-    
-    
+
+
 }
-.Card{
+
+.Card {
+    background: #1A2226;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     width: 60%;
-    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
 }
+
 .form-control {
     color: white;
-   
-   
+
+
 }
 
 
 .form-control:focus {
     color: white;
     box-shadow: none;
-    caret-color:white;
-   
+    caret-color: white;
+
 }
 
-.heading{
-    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+.fa-pagelines{
+font-size: 100px;
+}
+
+.text-green {
+    color: #28a745;
 }
