@@ -1,0 +1,12 @@
+@media screen and (min-width:0px) and (max-width:600px){
+  .Card{
+    width: 90% !important;
+  }
+}
+/* sm */
+@media screen and (min-width:601px) and (max-width:768px){
+    
+    .Card{
+        width: 90% !important;
+      }
+}
