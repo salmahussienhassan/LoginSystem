@@ -1,0 +1,43 @@
+body ,.nav {
+    font-family: "Titillium Web", sans-serif;
+    background: #24353f;
+}
+.nav{
+    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+}
+#home {
+    height: 75vh;
+}
+
+h1 {
+    color: #17a2b8;
+}
+input{
+    background-color: #24353f !important;
+}
+input::placeholder{
+    color: rgb(207, 207, 207) !important;
+    
+    
+}
+.Card{
+    width: 60%;
+    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+}
+.form-control {
+    color: white;
+   
+   
+}
+
+
+.form-control:focus {
+    color: white;
+    box-shadow: none;
+    caret-color:white;
+   
+}
+
+.heading{
+    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+}
