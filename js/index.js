@@ -65,6 +65,7 @@ else
                   
                  localStorage.setItem("usersindex",`${i}`);
                      window.location.replace("./home.html");
+                     break;
                 
                      
                  }
