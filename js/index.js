@@ -57,25 +57,31 @@ else
 
 
 //login function
-    login?.addEventListener('click',function(){
-        for(var i=0;i<allUsers.length;i++){
-        
-                 if(lEmail.value==allUsers[i].email && lPass.value==allUsers[i].pass)
-                 {console.log(allUsers[i].name);
-                  
-                 localStorage.setItem("usersindex",`${i}`);
-                     window.location.replace("./home.html");
-                     break;
-                
-                     
-                 }
-                
-                 
-             }
-             lfeedback.innerHTML='Incorrect Email or Password'
-
-             
-    });
+login?.addEventListener('click', function() {
+    if (lEmail.value == '' || lPass.value == '') {
+      lfeedback.innerHTML = 'All Inputs Is Required';
+    } else {
+      var userFound = false;
+      for (var i = 0; i < allUsers.length; i++) {
+        if (lEmail.value == allUsers[i].email) {
+          if (lPass.value == allUsers[i].pass) {
+            console.log(allUsers[i].name);
+            localStorage.setItem("usersindex", `${i}`);
+            window.location.replace("./home.html");
+            userFound = true;
+            break;
+          } else {
+            lfeedback.innerHTML = 'Incorrect Password';
+            userFound = true;
+            break;
+          }
+        }
+      }
+      if (!userFound) {
+        lfeedback.innerHTML = 'User Is Not Registered, Please Sign Up';
+      }
+    }
+  });
 
 
   
